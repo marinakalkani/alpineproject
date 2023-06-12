@@ -39,6 +39,8 @@ alpine:
         limits:
           memory: 512M
 ```
+This service uses the Alpine Linux base image (alpine) and creates a container named alpine. It has a single volume (dbdata) mounted at /home/marina/db inside the container. The user is set to root, and the command is set to sh -c "mkdir -p /home/marina/db && tail -f /dev/null", which creates the directory /home/marina/db and keeps the container running. It depends on the redis and db services and is connected to the vlab network. The container is deployed with a memory limit of 512 MB.
+
 The mysql service is:
 ```
 db:
@@ -63,6 +65,8 @@ db:
         limits:
           memory: 1G
 ```
+This service uses the MySQL image (mysql) and creates a container named db. It sets several environment variables to configure the MySQL instance, including MYSQL_ROOT_PASSWORD, MYSQL_DATABASE, MYSQL_USER, and MYSQL_PASSWORD. It also sets REDIS_HOST, REDIS_PORT, and REDIS_PASSWORD to configure the connection to the redis service. The container has a volume (dbdata) mounted at /var/lib/mysql to persist the MySQL data. It depends on the redis service and is connected to the vlab network. The container is deployed with a memory limit of 1 GB.
+
 The redis service is:
 ```
 redis:
@@ -80,6 +84,8 @@ redis:
         limits:
           memory: 256M
 ```
+This service uses the Redis image (redis) and creates a container named redis. It specifies restart: always to ensure the container is always restarted if it fails. It publishes port 6379 on the host, mapping it to the same port in the container. The command runs redis-server with various options, including setting a password with --requirepass and configuring the save interval and policy. It has a volume (cache) mounted at /data to persist the Redis data. The container is connected to the vlab network and is deployed with a memory limit of 256 MB.
+
 To create volume dbdata,cache and vlab network:
 ```
 networks:
@@ -90,5 +96,11 @@ volumes:
   cache:
     driver: local
 ```
+Networks
+The file defines a single network named vlab, which is used by all services.
+
+Volumes
+The file defines two volumes: dbdata and cache. dbdata is used by the alpine and db services, while cache is used by the redis service. Both volumes are set to use the local driver.
+
 ### Instalation guide
 See `INSTALL.md` file
