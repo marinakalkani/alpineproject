@@ -1,16 +1,10 @@
 # Installation Guide
 
-To set up the nginx and alpine docker compose project, follow these steps:
+To set up the Alpine, MySQL, Redis docker compose project, follow these steps:
 
-**Prerequisites**
-- You must have a computer :)
-- The computer mush have Windows or Linux
-- Make sure you have the following software installed on your machine:
-```
-Docker
-Docker Engine
-```
-Check this [link](https://docs.docker.com/engine/install/) for more info
+## Prerequisites
+
+Make sure you have Docker and Docker Compose installed on your system.
 
 ## Steps
 1. Download the file using git
