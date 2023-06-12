@@ -7,14 +7,14 @@ This repository contains a Docker Compose configuration for a simple setup with 
 [Docker hub link for alpine](https://hub.docker.com/_/alpine)
 
 ## Mysql
-MySQL is the world's most popular open source database. With its proven performance, reliability and ease-of-use, MySQL has become the leading database choice for web-based applications, covering the entire range from personal projects and websites, via e-commerce and information services, all the way to high profile web properties including Facebook, Twitter, YouTube, Yahoo! and many more.
+*MySQL is the world's most popular open source database. With its proven performance, reliability and ease-of-use, MySQL has become the leading database choice for web-based applications, covering the entire range from personal projects and websites, via e-commerce and information services, all the way to high profile web properties including Facebook, Twitter, YouTube, Yahoo! and many more.
 
-For more information and related downloads for MySQL Server and other MySQL products, please visit:
+For more information and related downloads for MySQL Server and other MySQL products, please visit:*
 
 [Docker hub link for mysql](www.mysql.com)
 
 ## Redis
-Redis is an open-source, networked, in-memory, key-value data store with optional durability. It is written in ANSI C. The development of Redis is sponsored by Redis Labs today; before that, it was sponsored by Pivotal and VMware. According to the monthly ranking by DB-Engines.com, Redis is the most popular key-value store. The name Redis means REmote DIctionary Server.
+*Redis is an open-source, networked, in-memory, key-value data store with optional durability. It is written in ANSI C. The development of Redis is sponsored by Redis Labs today; before that, it was sponsored by Pivotal and VMware. According to the monthly ranking by DB-Engines.com, Redis is the most popular key-value store. The name Redis means REmote DIctionary Server.*
 
 [Docker hub link for redis](wikipedia.org/wiki/Redis)
 
@@ -39,7 +39,7 @@ alpine:
         limits:
           memory: 512M
 ```
-This service uses the Alpine Linux base image (alpine) and creates a container named alpine. It has a single volume (dbdata) mounted at /home/marina/db inside the container. The user is set to root, and the command is set to sh -c "mkdir -p /home/marina/db && tail -f /dev/null", which creates the directory /home/marina/db and keeps the container running. It depends on the redis and db services and is connected to the vlab network. The container is deployed with a memory limit of 512 MB.
+*This service uses the Alpine Linux base image (alpine) and creates a container named alpine. It has a single volume (dbdata) mounted at /home/marina/db inside the container. The user is set to root, and the command is set to sh -c "mkdir -p /home/marina/db && tail -f /dev/null", which creates the directory /home/marina/db and keeps the container running. It depends on the redis and db services and is connected to the vlab network. The container is deployed with a memory limit of 512 MB.*
 
 The mysql service is:
 ```
@@ -65,7 +65,7 @@ db:
         limits:
           memory: 1G
 ```
-This service uses the MySQL image (mysql) and creates a container named db. It sets several environment variables to configure the MySQL instance, including MYSQL_ROOT_PASSWORD, MYSQL_DATABASE, MYSQL_USER, and MYSQL_PASSWORD. It also sets REDIS_HOST, REDIS_PORT, and REDIS_PASSWORD to configure the connection to the redis service. The container has a volume (dbdata) mounted at /var/lib/mysql to persist the MySQL data. It depends on the redis service and is connected to the vlab network. The container is deployed with a memory limit of 1 GB.
+*This service uses the MySQL image (mysql) and creates a container named db. It sets several environment variables to configure the MySQL instance, including MYSQL_ROOT_PASSWORD, MYSQL_DATABASE, MYSQL_USER, and MYSQL_PASSWORD. It also sets REDIS_HOST, REDIS_PORT, and REDIS_PASSWORD to configure the connection to the redis service. The container has a volume (dbdata) mounted at /var/lib/mysql to persist the MySQL data. It depends on the redis service and is connected to the vlab network. The container is deployed with a memory limit of 1 GB.*
 
 The redis service is:
 ```
@@ -84,7 +84,7 @@ redis:
         limits:
           memory: 256M
 ```
-This service uses the Redis image (redis) and creates a container named redis. It specifies restart: always to ensure the container is always restarted if it fails. It publishes port 6379 on the host, mapping it to the same port in the container. The command runs redis-server with various options, including setting a password with --requirepass and configuring the save interval and policy. It has a volume (cache) mounted at /data to persist the Redis data. The container is connected to the vlab network and is deployed with a memory limit of 256 MB.
+*This service uses the Redis image (redis) and creates a container named redis. It specifies restart: always to ensure the container is always restarted if it fails. It publishes port 6379 on the host, mapping it to the same port in the container. The command runs redis-server with various options, including setting a password with --requirepass and configuring the save interval and policy. It has a volume (cache) mounted at /data to persist the Redis data. The container is connected to the vlab network and is deployed with a memory limit of 256 MB.*
 
 To create volume dbdata,cache and vlab network:
 ```
