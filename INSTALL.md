@@ -11,7 +11,7 @@ Make sure you have Docker and Docker Compose installed on your system.
 
 `git clone https://github.com/marinakalkani/alpineproject.git/`
 
-2. Run `chmod +x install.sh` to install the containers
+2. Run `chmod +x install.sh`
 3. Run install.sh
 
 ## Uninstalling
