@@ -1,0 +1,63 @@
+version: '3'
+services:
+  alpine:
+    image: alpine
+    container_name: alpine
+    volumes:
+      - dbdata:/home/marina/db
+    user: root 
+    command: sh -c "mkdir -p /home/marina/db && tail -f /dev/null"
+    networks:
+      - vlab
+    depends_on:
+      - redis
+      - db
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+
+  db:
+    image: mysql
+    container_name: db
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=mydb
+      - MYSQL_USER=myuser
+      - MYSQL_PASSWORD=mypassword
+      - REDIS_HOST=db
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81 
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - vlab
+    depends_on:
+      - redis
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - 6379:6379
+    command: sh -c "redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81"
+    volumes: 
+      - cache:/data
+    networks:
+      - vlab
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+
+networks:
+  vlab:
+
+volumes:
+  dbdata:
+  cache:
+    driver: local
