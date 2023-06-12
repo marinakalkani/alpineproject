@@ -80,15 +80,15 @@ redis:
         limits:
           memory: 256M
 ```
-To create volume dbdata and vlab network:
+To create volume dbdata,cache and vlab network:
 ```
-volumes:
-  alpine_data:
-
 networks:
   vlab:
+
+volumes:
+  dbdata:
+  cache:
+    driver: local
 ```
 ### Instalation guide
-See `INSTALL.md` file or click [here](https://github.com/JohnTa15/Load-balancing-5-replicas-with-nginx/blob/main/INSTALL.md) ;)
-
-          
+See `INSTALL.md` file
