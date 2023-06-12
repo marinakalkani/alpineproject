@@ -7,9 +7,9 @@ This repository contains a Docker Compose configuration for a simple setup with 
 [Docker hub link for alpine](https://hub.docker.com/_/alpine)
 
 ## Mysql
-*MySQL is the world's most popular open source database. With its proven performance, reliability and ease-of-use, MySQL has become the leading database choice for web-based applications, covering the entire range from personal projects and websites, via e-commerce and information services, all the way to high profile web properties including Facebook, Twitter, YouTube, Yahoo! and many more.
+*MySQL is the world's most popular open source database. With its proven performance, reliability and ease-of-use, MySQL has become the leading database choice for web-based applications, covering the entire range from personal projects and websites, via e-commerce and information services, all the way to high profile web properties including Facebook, Twitter, YouTube, Yahoo! and many more.*
 
-For more information and related downloads for MySQL Server and other MySQL products, please visit:*
+*For more information and related downloads for MySQL Server and other MySQL products, please visit:*
 
 [Docker hub link for mysql](www.mysql.com)
 
@@ -97,10 +97,10 @@ volumes:
     driver: local
 ```
 Networks
-The file defines a single network named vlab, which is used by all services.
+The project defines a single network named vlab, which is used by all services.
 
 Volumes
-The file defines two volumes: dbdata and cache. dbdata is used by the alpine and db services, while cache is used by the redis service. Both volumes are set to use the local driver.
+The project defines two volumes: dbdata and cache. dbdata is used by the alpine and db services, while cache is used by the redis service. Both volumes are set to use the local driver.
 
 ### Instalation guide
 See `INSTALL.md` file
