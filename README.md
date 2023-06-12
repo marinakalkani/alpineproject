@@ -20,5 +20,26 @@ Redis is an open-source, networked, in-memory, key-value data store with optiona
 
 ### Docker Compose Details
 
-The alpine service is :
+The alpine service is:
 ```
+alpine:
+    image: alpine
+    container_name: alpine
+    volumes:
+      - dbdata:/home/marina/db
+    user: root 
+    command: sh -c "mkdir -p /home/marina/db && tail -f /dev/null"
+    networks:
+      - vlab
+    depends_on:
+      - redis
+      - db
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+```
+The mysql service is:
+```
+
+          
