@@ -96,10 +96,10 @@ volumes:
   cache:
     driver: local
 ```
-Networks
+Networks:
 The project defines a single network named vlab, which is used by all services.
 
-Volumes
+Volumes:
 The project defines two volumes: dbdata and cache. dbdata is used by the alpine and db services, while cache is used by the redis service. Both volumes are set to use the local driver.
 
 ### Instalation guide
