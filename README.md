@@ -41,5 +41,29 @@ alpine:
 ```
 The mysql service is:
 ```
+db:
+    image: mysql
+    container_name: db
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=mydb
+      - MYSQL_USER=myuser
+      - MYSQL_PASSWORD=mypassword
+      - REDIS_HOST=db
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81 
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - vlab
+    depends_on:
+      - redis
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+```
+The redis service is:
+```
 
           
