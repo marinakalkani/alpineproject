@@ -14,6 +14,6 @@ Make sure you have Docker and Docker Compose installed on your system.
 2. Run `chmod +x install.sh` to install the containers
 3. Run install.sh
 
-## Uninstalling.. 
+## Uninstalling
 - To uninstall those containers you have to `chmod +x uninstall.sh`
 - Then execute `./uninstall.sh`
