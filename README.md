@@ -65,5 +65,30 @@ db:
 ```
 The redis service is:
 ```
+redis:
+    image: redis
+    restart: always
+    ports:
+      - 6379:6379
+    command: sh -c "redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81"
+    volumes: 
+      - cache:/data
+    networks:
+      - vlab
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+```
+To create volume dbdata and vlab network:
+```
+volumes:
+  alpine_data:
+
+networks:
+  vlab:
+```
+### Instalation guide
+See `INSTALL.md` file or click [here](https://github.com/JohnTa15/Load-balancing-5-replicas-with-nginx/blob/main/INSTALL.md) ;)
 
           
